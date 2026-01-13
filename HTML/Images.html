@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .rounded {
+            border-radius: 15px;
+        }
+        .center {
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>2221050242 - Lý Quang Huy</h1>
+<h1>HTML Images</h1>
+
+<!-- 1. Ảnh cơ bản -->
+<h2>1. Ảnh cơ bản</h2>
+<img src="https://www.w3schools.com/html/pic_trulli.jpg" alt="Trulli">
+
+<!-- 2. Thuộc tính width / height -->
+<h2>2. Kích thước ảnh</h2>
+<img src="https://www.w3schools.com/html/img_girl.jpg" alt="Girl" width="200">
+
+<!-- 3. Ảnh trong thư mục -->
+<h2>3. Ảnh trong thư mục</h2>
+<img src="images/example.jpg" alt="Ảnh trong thư mục">
+
+<!-- 4. Ảnh từ URL -->
+<h2>4. Ảnh từ Internet</h2>
+<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools">
+
+<!-- 5. Ảnh click được -->
+<h2>5. Click vào ảnh</h2>
+<a href="https://www.w3schools.com">
+    <img src="https://www.w3schools.com/html/img_chania.jpg" alt="Chania" width="200">
+</a>
+
+<!-- 6. Ảnh nổi (float) -->
+<h2>6. Ảnh float</h2>
+<p>
+<img src="https://www.w3schools.com/html/smiley.gif" alt="Smiley" style="float:right;width:42px;height:42px;">
+Văn bản sẽ bao quanh hình ảnh.
+</p>
+
+<!-- 7. Căn giữa + bo góc -->
+<h2>7. Ảnh đẹp hơn</h2>
+<img src="https://www.w3schools.com/html/pic_trulli.jpg"
+     alt="Trulli"
+     class="rounded center"
+     width="300">
+
+<!-- 8. Bản đồ ảnh (Image Map) -->
+<h2>8. Image Map</h2>
+<img src="https://www.w3schools.com/html/workplace.jpg" alt="Workplace" usemap="#workmap">
+
+<map name="workmap">
+    <area shape="rect" coords="34,44,270,350" alt="Computer" href="#">
+    <area shape="rect" coords="290,172,333,250" alt="Phone" href="#">
+    <area shape="circle" coords="337,300,44" alt="Coffee" href="#">
+</map>
+
+</body>
+</html>

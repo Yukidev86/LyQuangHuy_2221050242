@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- responsive meta tag :contentReference[oaicite:0]{index=0} -->
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .responsive-text {
+            font-size: 5vw; /* text responsive theo viewport :contentReference[oaicite:1]{index=1} */
+        }
+        .responsive-box {
+            float: left;
+            width: 30%;
+            padding: 10px;
+        }
+        @media screen and (max-width: 600px) {
+            .responsive-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>2221050242 - Lý Quang Huy</h1>
+
+<h2>HTML Responsive Web Design</h2>
+
+<p class="responsive-text">Responsive text changes size with screen width. :contentReference[oaicite:2]{index=2}</p>
+
+<img src="https://www.w3schools.com/html/img_girl.jpg" alt="Responsive Image">
+
+<div class="responsive-box" style="background-color: lightblue;">Box 1</div>
+<div class="responsive-box" style="background-color: lightgreen;">Box 2</div>
+<div class="responsive-box" style="background-color: lightcoral;">Box 3</div>
+
+</body>
+</html>

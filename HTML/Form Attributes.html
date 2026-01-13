@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>2221050242 - Lý Quang Huy</h1>
+
+<h2>HTML Forms Attributes</h2>
+
+<form action="/submit_form.php" method="post" autocomplete="on">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" placeholder="Enter your first name" required><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" placeholder="example@mail.com"><br>
+
+    <label for="age">Age (min 18):</label><br>
+    <input type="number" id="age" name="age" min="18" max="100"><br>
+
+    <label for="birthday">Birthday:</label><br>
+    <input type="date" id="birthday" name="birthday"><br><br>
+
+    <input type="submit" value="Submit Form">
+</form>
+
+</body>
+</html>
