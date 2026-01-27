@@ -1,5 +1,13 @@
-@{
-    ViewData["Title"] = "Demo";
-}
 
-<h1>Hello Lý Quang Huy - 2221050242</h1>
+<h2>Nhập họ tên</h2>
+
+<form method="post">
+    <input type="text" name="fullName" placeholder="Nhập họ tên" />
+    <input type="text" name="maSoSinhVien" placeholder="Nhập mã số sinh viên" />
+    <button type="submit">Gửi</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <h3>@ViewBag.Message</h3>
+}

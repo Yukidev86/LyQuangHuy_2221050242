@@ -1,6 +1,7 @@
 Họ tên: Lý Quang Huy  
-MSSV: 2221050242  
+MSSV: 2221050242 
 
+BUỔI HỌC SỐ 3
 1. Tìm hiểu cấu trúc thư mục của dự án .Net MVC:
 -sau khi tạo thư mục bằng lệnh "dotnet new mvc -n DemoMvc" trong terminal xuất hiện project DemoMvc gồm các mục:
     -bin\Debug\net10.0 //Chức năng: Chứa file đã biên dịch; Được tạo tự động khi chạy project; Không chỉnh sửa thủ công
@@ -130,5 +131,107 @@ MSSV: 2221050242
         kết quả
     //Nếu trước đó đã chạy dotnet run thì cần nhấn tổ hợp phím CTRL+SHIFR+ESC tìm DemoMvc rồi tắt nó đi
 
-
+    BUỔI HỌC SỐ 4
+    1. TÌM HIỂU VỀ ViewBag TRONG MVC
+        -ViewBag là gì? 
+            ViewBag dùng để truyền dữ liệu từ Controller sang View
+            Kiểu dynamic → không cần khai báo kiểu dữ liệu
+            Chỉ tồn tại trong 1 request
+        -Dùng khi:
+            Gửi chuỗi
+            Gửi số
+            Gửi dữ liệu đơn giản (không phức tạp)
+        -Cú pháp ViewBag
+            Controller
+                ViewBag.Message = "Hello MVC";
+            View
+                <h2>@ViewBag.Message</h2>
+2. VÍ DỤ: GỬI DỮ LIỆU TỪ CONTROLLER → VIEW BẰNG ViewBag
+    Bước 1: Tạo Controller
+    Controllers/DemoController.cs
+        using Microsoft.AspNetCore.Mvc;
+        namespace DemoMvc.Controllers
+        {
+            public class DemoController : Controller
+            {
+                public IActionResult Index()
+                {
+                    ViewBag.Message = "Xin chào ASP.NET MVC";
+                    return View();
+                }
+            }
+        }
+    Bước 2: Tạo View
+    Views/Demo/Index.cshtml
+    <h2>@ViewBag.Message</h2>
+    Truy cập:
+    /Demo/Index
+3. Tìm hiểu về gửi nhận dữ liệu giữa View và Controller thông qua Submit form.
+    -BẢN CHẤT CỦA SUBMIT FORM TRONG MVC
+        Trong ASP.NET MVC, khi submit form, dữ liệu sẽ đi theo luồng:
+            View (Form HTML)
+            ↓ submit
+            Controller (Action [HttpPost])
+            ↓ xử lý
+            Controller → View (trả kết quả)
+        MVC không xử lý form ở View, mà:
+            View → chỉ hiển thị + nhập dữ liệu
+            Controller → nhận dữ liệu + xử lý logic
+    -FORM HTML GỬI DỮ LIỆU NHƯ THẾ NÀO?
+    Ví dụ form đơn giản:
+        <form method="post">
+            <input type="text" name="fullName" />
+        <button type="submit">Gửi</button>
+    Khi bấm Submit:
+    Trình duyệt gửi dữ liệu:
+        fullName=Nguyen Van A
+    Gửi bằng HTTP POST
+    -CONTROLLER NHẬN DỮ LIỆU RA SAO?
+        Cách 1: Nhận bằng tham số đơn lẻ
+        [HttpPost]
+        public IActionResult Index(string fullName)
+        {
+            ViewBag.Message = "Xin chào " + fullName;
+            return View();
+        }
+        Điều kiện:
+        name="fullName" trong View
+        trùng tên với tham số string fullName
+        ➡ MVC tự động binding
+4. Lấy ví dụ: nhập họ tên trên view gửi dữ liệu lên controller, controller xử lý và gửi thông báo "Xin chào " + Họ tên về hiển thị lên view.
+    -Bước 1: Controller
+    Controllers/HelloController.cs
+        using Microsoft.AspNetCore.Mvc;
+        namespace DemoMvc.Controllers
+        {
+            public class HelloController : Controller
+            {
+                [HttpGet]
+                public IActionResult Index()
+                {
+                    return View();
+                }
+                [HttpPost]
+                public IActionResult Index(string fullName)
+                {
+                    ViewBag.Message = "Xin chào " + fullName;
+                    return View();
+                }
+            }
+        }
+    -Bước 2: View
+        Views/Hello/Index.cshtml
+        <h2>Nhập họ tên</h2>
+        <form method="post">
+            <input type="text" name="fullName" placeholder="Nhập họ tên" />
+            <button type="submit">Gửi</button>
+        </form>
+        @if (ViewBag.Message != null)
+        {
+            <h3>@ViewBag.Message</h3>
+        }
+    -Cơ chế:
+        View → submit → Controller (POST) → ViewBag → View
+    
+        
 
