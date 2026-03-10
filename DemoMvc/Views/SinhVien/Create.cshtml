@@ -1,0 +1,15 @@
+@model DemoMvc.Models.SinhVien
+
+<h2>Thêm sinh viên</h2>
+
+<form asp-action="Create">
+
+    <label>Mã sinh viên</label>
+    <input asp-for="MaSinhVien" />
+
+    <label>Họ tên</label>
+    <input asp-for="HoTen" />
+
+    <button type="submit">Lưu</button>
+
+</form>

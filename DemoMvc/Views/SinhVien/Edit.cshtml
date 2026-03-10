@@ -1,0 +1,17 @@
+@model DemoMvc.Models.SinhVien
+
+<h2>Chỉnh sửa sinh viên</h2>
+
+<form asp-action="Edit">
+
+<input type="hidden" asp-for="Id"/>
+
+<label>Mã sinh viên</label>
+<input asp-for="MaSinhVien"/>
+
+<label>Họ tên</label>
+<input asp-for="HoTen"/>
+
+<button type="submit">Cập nhật</button>
+
+</form>

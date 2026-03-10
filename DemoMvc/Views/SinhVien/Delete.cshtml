@@ -1,0 +1,17 @@
+@model DemoMvc.Models.SinhVien
+
+<h2>Xoá sinh viên</h2>
+
+<p>Bạn có chắc muốn xoá sinh viên này?</p>
+
+<form asp-action="Delete">
+
+<input type="hidden" asp-for="Id"/>
+
+<p>@Model.MaSinhVien - @Model.HoTen</p>
+
+<button type="submit">Xoá</button>
+
+<a href="/SinhVien">Huỷ</a>
+
+</form>
