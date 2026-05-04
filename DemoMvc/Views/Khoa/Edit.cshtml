@@ -1,0 +1,14 @@
+@model DemoMvc.Models.Faculty
+
+<h2>Sửa khoa</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="KhoaId"/>
+
+    <div>
+        <label asp-for="TenKhoa"></label>
+        <input asp-for="TenKhoa" class="form-control"/>
+    </div>
+
+    <button type="submit">Cập nhật</button>
+</form>

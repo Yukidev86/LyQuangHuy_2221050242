@@ -1,0 +1,25 @@
+@model List<DemoMvc.Models.Faculty>
+
+<h2>Danh sách khoa</h2>
+
+<a asp-action="Create" class="btn btn-success">Thêm khoa</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Tên khoa</th>
+        <th>Hành động</th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.KhoaId</td>
+        <td>@item.TenKhoa</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.KhoaId">Sửa</a> |
+            <a asp-action="Delete" asp-route-id="@item.KhoaId">Xóa</a>
+        </td>
+    </tr>
+}
+</table>

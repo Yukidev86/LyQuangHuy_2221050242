@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using DemoMvc.Data;
 using DemoMvc.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using OfficeOpenXml;
 
 namespace DemoMvc.Controllers
 {
@@ -17,32 +20,45 @@ namespace DemoMvc.Controllers
         // READ - hiển thị danh sách
         public IActionResult Index()
         {
-            var list = _context.SinhViens.ToList();
+                var list = _context.SinhViens
+                       .Include(s => s.Khoa)
+                       .ToList();
             return View(list);
         }
 
         // CREATE
         public IActionResult Create()
         {
+            ViewBag.Khoas = new SelectList(_context.Khoas, "KhoaId", "TenKhoa");
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Create(SinhVien sv)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.SinhViens.Add(sv);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(sv);
-        }
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult Create(SinhVien sv)
+{
+    if (!ModelState.IsValid)
+    {
+        var errors = ModelState.Values
+            .SelectMany(v => v.Errors)
+            .Select(e => e.ErrorMessage);
+
+        ViewBag.Khoas = new SelectList(_context.Khoas, "KhoaId", "TenKhoa", sv.KhoaId);
+        return Content("Lỗi: " + string.Join(" | ", errors));
+    }
+
+    _context.SinhViens.Add(sv);
+    _context.SaveChanges();
+    return RedirectToAction("Index");
+}
 
         // EDIT
         public IActionResult Edit(int id)
         {
             var sv = _context.SinhViens.Find(id);
+
+            if (sv == null) return NotFound();
+          ViewBag.Khoas = new SelectList(_context.Khoas, "KhoaId", "TenKhoa", sv.KhoaId);
             return View(sv);
         }
 
@@ -55,6 +71,7 @@ namespace DemoMvc.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
+                ViewBag.Khoas = new SelectList(_context.Khoas, "KhoaId", "TenKhoa", sv.KhoaId);
             return View(sv);
         }
 
@@ -78,5 +95,50 @@ namespace DemoMvc.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+    public IActionResult ImportExcel()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult ImportExcel(IFormFile file)
+    {
+        if (file == null || file.Length == 0)
+        {
+            return Content("Chưa chọn file!");
+        }
+
+        using (var stream = new MemoryStream())
+        {
+            file.CopyTo(stream);
+
+            OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+            using (var package = new OfficeOpenXml.ExcelPackage(stream))
+            {
+                var worksheet = package.Workbook.Worksheets[0];
+                int rowCount = worksheet.Dimension.Rows;
+
+                for (int row = 2; row <= rowCount; row++)
+                {
+                    var sv = new SinhVien
+                    {
+                        MaSinhVien = worksheet.Cells[row, 1].Text,
+                        HoTen = worksheet.Cells[row, 2].Text,
+                        KhoaId = int.Parse(worksheet.Cells[row, 3].Text)
+                    };
+
+                    _context.SinhViens.Add(sv);
+                }
+
+                _context.SaveChanges();
+            }
+        }
+
+        return Content("Import thành công!");
+    }
+
     }
 }

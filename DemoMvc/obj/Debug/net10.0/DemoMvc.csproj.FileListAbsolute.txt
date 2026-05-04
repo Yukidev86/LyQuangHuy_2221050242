@@ -223,3 +223,16 @@ D:\PTPMQL_BT\DemoMvc\obj\Debug\net10.0\refint\DemoMvc.dll
 D:\PTPMQL_BT\DemoMvc\obj\Debug\net10.0\DemoMvc.pdb
 D:\PTPMQL_BT\DemoMvc\obj\Debug\net10.0\DemoMvc.genruntimeconfig.cache
 D:\PTPMQL_BT\DemoMvc\obj\Debug\net10.0\ref\DemoMvc.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\ClosedXML.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\ClosedXML.Parser.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\DocumentFormat.OpenXml.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\DocumentFormat.OpenXml.Framework.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\EPPlus.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\EPPlus.Interfaces.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\ExcelNumberFormat.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\RBush.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\SixLabors.Fonts.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\System.IO.Packaging.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\System.Security.Cryptography.Pkcs.dll
+D:\PTPMQL_BT\DemoMvc\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Security.Cryptography.Pkcs.dll

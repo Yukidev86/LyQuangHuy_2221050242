@@ -2,14 +2,35 @@
 
 <h2>Thêm sinh viên</h2>
 
-<form asp-action="Create">
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
 
-    <label>Mã sinh viên</label>
-    <input asp-for="MaSinhVien" />
+    <div class="form-group">
+        <label asp-for="MaSinhVien"></label>
+        <input asp-for="MaSinhVien" class="form-control"/>
+        <span asp-validation-for="MaSinhVien" class="text-danger"></span>
+    </div>
 
-    <label>Họ tên</label>
-    <input asp-for="HoTen" />
+    <div class="form-group">
+        <label asp-for="HoTen"></label>
+        <input asp-for="HoTen" class="form-control"/>
+        <span asp-validation-for="HoTen" class="text-danger"></span>
+    </div>
 
-    <button type="submit">Lưu</button>
+    <div class="form-group">
+        <label asp-for="KhoaId"></label>
+        <select asp-for="KhoaId" class="form-control" asp-items="ViewBag.Khoas">
+            <option value="">-- Chọn khoa --</option>
+        </select>
+        <span asp-validation-for="KhoaId" class="text-danger"></span>
+    </div>
 
+    <br/>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
 </form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}@Html.AntiForgeryToken()

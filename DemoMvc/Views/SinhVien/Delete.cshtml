@@ -2,16 +2,21 @@
 
 <h2>Xoá sinh viên</h2>
 
-<p>Bạn có chắc muốn xoá sinh viên này?</p>
+<h4>Bạn có chắc muốn xoá sinh viên này?</h4>
 
-<form asp-action="Delete">
+<form asp-action="Delete" method="post">
 
-<input type="hidden" asp-for="Id"/>
+    <input type="hidden" asp-for="Id"/>
 
-<p>@Model.MaSinhVien - @Model.HoTen</p>
+    <div>
+        <p><strong>Mã sinh viên:</strong> @Model.MaSinhVien</p>
+        <p><strong>Họ tên:</strong> @Model.HoTen</p>
 
-<button type="submit">Xoá</button>
+        <!-- 🔗 thêm hiển thị Khoa -->
+        <p><strong>Khoa:</strong> @Model.Khoa?.TenKhoa</p>
+    </div>
 
-<a href="/SinhVien">Huỷ</a>
+    <button type="submit" class="btn btn-danger">Xoá</button>
+    <a asp-action="Index" class="btn btn-secondary">Huỷ</a>
 
 </form>

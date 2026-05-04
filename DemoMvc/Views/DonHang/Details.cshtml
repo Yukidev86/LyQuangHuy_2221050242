@@ -1,0 +1,15 @@
+@model DemoMvc.Models.DonHang
+
+<h2>Đơn hàng</h2>
+
+<p>Khách: @Model.KhachHang.TenKhachHang</p>
+
+<table>
+@foreach(var item in Model.ChiTietDonHangs)
+{
+    <tr>
+        <td>@item.SanPham.TenSanPham</td>
+        <td>@item.SoLuong</td>
+    </tr>
+}
+</table>

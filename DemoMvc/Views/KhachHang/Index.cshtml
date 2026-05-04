@@ -1,0 +1,22 @@
+@model List<DemoMvc.Models.KhachHang>
+
+<h2>Danh sách khách hàng</h2>
+
+<a asp-action="Create">+ Thêm mới</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Điện thoại</th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.TenKhachHang</td>
+        <td>@item.DienThoai</td>
+    </tr>
+}
+</table>
